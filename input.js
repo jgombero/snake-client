@@ -26,6 +26,12 @@ const handleUserInput = function(key) {
   } else if (key === 'd') {
     connection.write('Move: right');
   }
+  // Banter commands
+  if (key === 'n') {
+    connection.write('Say: Nice Try');
+  } else if (key === 'e') {
+    connection.write('Say: Eat My Shorts');
+  }
 };
 
 module.exports = { setupInput };
