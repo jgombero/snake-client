@@ -1,3 +1,10 @@
+const { MOVE_UP_KEY,
+  MOVE_DOWN_KEY,
+  MOVE_LEFT_KEY,
+  MOVE_RIGHT_KEY,
+  TRASH_TALK
+} = require('./constants');
+
 // Stores the active TCP connection object
 let connection;
 
@@ -16,21 +23,21 @@ const handleUserInput = function(key) {
   if (key === '\u0003') {
     process.exit();
   }
+
   // Movement controls
-  if (key === 'w') {
+  if (key === MOVE_UP_KEY) {
     connection.write('Move: up');
-  } else if (key === 's') {
+  } else if (key === MOVE_DOWN_KEY) {
     connection.write('Move: down');
-  } else if (key === 'a') {
+  } else if (key === MOVE_LEFT_KEY) {
     connection.write('Move: left');
-  } else if (key === 'd') {
+  } else if (key === MOVE_RIGHT_KEY) {
     connection.write('Move: right');
   }
+  
   // Banter commands
-  if (key === 'n') {
-    connection.write('Say: Nice Try');
-  } else if (key === 'e') {
-    connection.write('Say: Eat My Shorts');
+  if (TRASH_TALK.hasOwnProperty(key)) {
+    connection.write('Say: ' + TRASH_TALK[key])
   }
 };
 
